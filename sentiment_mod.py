@@ -63,7 +63,6 @@ featuresets = pickle.load(featuresets_f)
 featuresets_f.close()
 
 random.shuffle(featuresets)
-print(len(featuresets))
 
 testing_set = featuresets[10000:]
 training_set = featuresets[:10000]

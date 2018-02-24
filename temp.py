@@ -1,6 +1,7 @@
 import nltk
 import random
 from nltk.corpus import movie_reviews
+import pickle
 
 def find_features(document):
     words = set(document)
@@ -27,4 +28,7 @@ word_features = list(all_words.keys())[:3000]
 
 featuresets = [(find_features(rev), category) for (rev, category) in documents]
 
-print(featuresets)
+
+save_classifier = open("pickled_algos/featuresets.pickle","wb")
+pickle.dump(featuresets, save_classifier)
+save_classifier.close()
