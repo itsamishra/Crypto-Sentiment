@@ -3,6 +3,19 @@
 import sentiment_mod as s
 import csv
 
+def screen_tweets(text):
+	blacklisted_phrases = ["rt ", "eth", "ethereum", "bitcoin cash", "bcash", "ltc", "litecoin"]
+
+	for phrase in blacklisted_phrases:
+		if phrase in text:
+			return False
+
+#	if "eth" not in text and "cash" not in text and "rt " not in text:
+#		return True
+
+	return True
+
+
 tweets = []
 with open("tweets.tsv", "r", newline="") as fp:
 	read_tsv = csv.reader(fp, delimiter="\t")
@@ -11,12 +24,11 @@ with open("tweets.tsv", "r", newline="") as fp:
 		if i[12]!="text":
 			tweets.append(i[12])
 
-#TODO remove repetitions from tweets
-#TODO find a way of getting all text from tweets (no "..." at end of text)
+# TODO find a way of getting all text from tweets (no "..." at end of text)
 
 for i in tweets:
 	i_lower = i.lower()
-	if "eth" not in i_lower and "cash" not in i_lower:
+	if screen_tweets(i_lower):
 		sentiment = s.sentiment(i)
 		if sentiment[1]==1:
 			print(i)

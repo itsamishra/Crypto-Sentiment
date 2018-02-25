@@ -10,7 +10,7 @@ consumer_key, consumer_secret, access_token, access_token_secret = get_creds.get
 headings = ["contributors", "favorite_count", "retweeted_status", "retweet_count", "extended_entities", "geo", "in_reply_to_screen_name", "metadata", "lang", "user", "in_reply_to_status_id_str", "coordinates", "text", "place", "in_reply_to_user_id_str", "favorited", "truncated", "source", "possibly_sensitive", "is_quote_status", "id_str", "retweeted", "in_reply_to_user_id", "id", "created_at", "in_reply_to_status_id", "entities"]
 
 # Number of tweets to retreive
-NUM_TWEETS = 100
+NUM_TWEETS = 2000
 
 # Writes new tweet to TSV file
 def write_to_tsv(tweet_json):
