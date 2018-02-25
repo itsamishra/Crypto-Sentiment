@@ -3,15 +3,15 @@
 import sentiment_mod as s
 import csv
 
+# 
 def screen_tweets(text):
+	if text[0]=="@":
+		return False
 	blacklisted_phrases = ["rt ", "eth", "ethereum", "bitcoin cash", "bcash", "ltc", "litecoin"]
 
 	for phrase in blacklisted_phrases:
 		if phrase in text:
 			return False
-
-#	if "eth" not in text and "cash" not in text and "rt " not in text:
-#		return True
 
 	return True
 
@@ -24,6 +24,7 @@ with open("tweets.tsv", "r", newline="") as fp:
 		if i[12]!="text":
 			tweets.append(i[12])
 
+# TODO replace current TSV solution with Google Sheets "database" solution (see: https://www.youtube.com/watch?v=vISRn5qFrkM)
 # TODO find a way of getting all text from tweets (no "..." at end of text)
 
 for i in tweets:
