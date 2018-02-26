@@ -26,7 +26,7 @@ def detect_country(text):
 	countries = list(geotext.GeoText(i).country_mentions)
 	cities = list(geotext.GeoText(i).cities)
 
-	# If any countries are detected, returns them
+	# If any countries are detected, returns them (ignores text with city names because some cities have stupid names like "Of")
 	if len(countries)>0 and len(cities)==0:
 		# Converts each country code to the countries name (e.g. CA-->Canada)
 		names = ""
