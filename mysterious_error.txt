@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "live_twitter_feed.py", line 84, in <module>
+    twitterStream.filter(track=["bitcoin"])
+  File "/home/am/Documents/Crypto-Sentiment/lib/python3.5/site-packages/tweepy/streaming.py", line 445, in filter
+    self._start(async)
+  File "/home/am/Documents/Crypto-Sentiment/lib/python3.5/site-packages/tweepy/streaming.py", line 361, in _start
+    self._run()
+  File "/home/am/Documents/Crypto-Sentiment/lib/python3.5/site-packages/tweepy/streaming.py", line 294, in _run
+    raise exception
+  File "/home/am/Documents/Crypto-Sentiment/lib/python3.5/site-packages/tweepy/streaming.py", line 263, in _run
+    self._read_loop(resp)
+  File "/home/am/Documents/Crypto-Sentiment/lib/python3.5/site-packages/tweepy/streaming.py", line 324, in _read_loop
+    self._data(next_status_obj)
+  File "/home/am/Documents/Crypto-Sentiment/lib/python3.5/site-packages/tweepy/streaming.py", line 297, in _data
+    if self.listener.on_data(data) is False:
+  File "live_twitter_feed.py", line 60, in on_data
+    detected_countries = detect_country(all_data["text"])
+  File "live_twitter_feed.py", line 27, in detect_country
+    country_names.append(pycountry.countries.get(alpha_2=c).name)
+  File "/home/am/Documents/Crypto-Sentiment/lib/python3.5/site-packages/pycountry/db.py", line 43, in load_if_needed
+    return f(self, *args, **kw)
+  File "/home/am/Documents/Crypto-Sentiment/lib/python3.5/site-packages/pycountry/db.py", line 101, in get
+    return self.indices[field][value]
+KeyError: 'UK'
