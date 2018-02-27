@@ -1,0 +1,4 @@
+DB Schema
+
+Table Name = Country Name
+| Time | Tweet ID | Positive Magnitude | Negative Magnitude |

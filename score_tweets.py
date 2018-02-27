@@ -45,11 +45,6 @@ with open("tweets.tsv", "r", newline="") as fp:
 		if i[12]!="text":
 			tweets.append(i[12])
 
-# TODO Start doing live sentament analysis and track price of BTC in various geographies. Then, after 1 week (or more) see if there's a correlation between my sentiment analysis and BTC price
-# TODO Replace geotext country search with custom solution: make list of all countries and their top 5-10 cities, compare each tweet aginst this list to extract geographic info
-# TODO replace current TSV solution with Google Sheets "database" solution (see: https://www.youtube.com/watch?v=vISRn5qFrkM)
-# TODO find a way of getting all text from tweets (no "..." at end of text)
-
 # Iterates over all tweets
 for i in tweets:
 	#'''

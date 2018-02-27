@@ -6,6 +6,17 @@ import json
 import geotext
 import pycountry
 import sentiment_mod as s
+from time import time
+from save_tweet import add_to_db
+
+
+# TODO Add SQLite support to save sentiment
+# TODO Change country return string from "name" to "alpha_2"
+# TODO Start doing live sentament analysis and track price of BTC in various geographies. Then, after 1 week (or more) see if there's a correlation between my sentiment analysis and BTC price
+# TODO Replace geotext country search with custom solution: make list of all countries and their top 5-10 cities, compare each tweet aginst this list to extract geographic info
+# TODO replace current TSV solution with Google Sheets "database" solution (see: https://www.youtube.com/watch?v=vISRn5qFrkM)
+# TODO find a way of getting all text from tweets (no "..." at end of text)
+
 
 # Twitter API keys/secrets
 consumer_key, consumer_secret, access_token, access_token_secret = get_creds.get_creds(1)
@@ -71,6 +82,15 @@ class listener(StreamListener):
 					get_stats(c, sentiment)
 				print(country_stats)
 				print("-------------------------------------------------------------------------------")
+
+				# Saves tweet sentiment info to db
+				time = str(time())
+				print(time)
+				print()
+
+				for c in detected_countries:
+
+					add_to_db(sentiment_db, )
 
 				return True
 
