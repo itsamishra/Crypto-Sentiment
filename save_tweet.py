@@ -1,5 +1,4 @@
 import sqlite3
-from time import time
 
 def replace_spaces(str):
 	return str.replace(" ", "_")
@@ -20,7 +19,8 @@ def create_table(db_name, country_name):
 
 #
 def add_to_db(db_name, country_name, time, tweet_id, positive_magnitude, negative_magnitude):
-	db_name, country_name, time, tweet_id, positive_magnitude, negative_magnitude = replace_spaces(db_name), replace_spaces(country_name), replace_spaces(time), replace_spaces(tweet_id), replace_spaces(positive_magnitude), replace_spaces(negative_magnitude)
+	country_name = replace_spaces(country_name)
+	country_name = country_name.replace(" ", "_").replace(",", "-")
 
 	create_table(db_name, country_name)
 	add_row(db_name, country_name, time, tweet_id, positive_magnitude, negative_magnitude)

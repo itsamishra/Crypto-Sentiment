@@ -6,7 +6,7 @@ import json
 import geotext
 import pycountry
 import sentiment_mod as s
-from time import time
+import time
 from save_tweet import add_to_db
 
 
@@ -23,7 +23,6 @@ consumer_key, consumer_secret, access_token, access_token_secret = get_creds.get
 
 # Keeps track of positive/negative for each country
 country_stats = {}
-#pos_neg_num = [0,0,0]
 
 # Returns country referenced in text
 def detect_country(text):
@@ -84,13 +83,14 @@ class listener(StreamListener):
 				print("-------------------------------------------------------------------------------")
 
 				# Saves tweet sentiment info to db
-				time = str(time())
-				print(time)
-				print()
+				current_time = str(time.time())
+				tweet_id = all_data["id_str"]
 
 				for c in detected_countries:
-
-					add_to_db(sentiment_db, )
+					if sentiment[0]=="pos":
+						add_to_db("sentiment_db", c, current_time, tweet_id, sentiment[1], 0)
+					else:
+						add_to_db("sentiment_db", c, current_time, tweet_id, 0, sentiment[1])
 
 				return True
 
@@ -105,5 +105,5 @@ twitterStream = Stream(auth, listener())
 # Mysterious error requires this try/except. Error is: KeyError: 'UK' (see mysterious_error.txt for more info)
 try:
 	twitterStream.filter(track=["bitcoin"])
-except e:
+except Exception as e:
 	print(e)
